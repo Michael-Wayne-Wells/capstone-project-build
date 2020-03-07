@@ -1,9 +1,14 @@
 import React from 'react';
+import Vulnerabilities from './Vulnerabilities';
+
 
 
 function Learn() {
     return (
-        <div>Learn</div>
+        <div>Learn
+        <Vulnerabilities />
+        </div>
+
     )
 }
 
