@@ -1,5 +1,6 @@
 import React from "react";
 import Quiz from "./Quiz";
+
 function Vulnerabilities() {
   return (
     <div>
