@@ -6,7 +6,7 @@ class Header extends React.Component {
     const { user } = this.props;
 
     return (
-      <nav className="site-nav family-sans navbar navbar-expand bg-primary navbar-dark higher">
+      <nav className="site-nav family-sans navbar navbar-expand bg-dark navbar-dark higher">
         <div className="container-fluid">
           <a href="/" className="navbar-brand">
             <img style={{ height: "25px" }} src="goose.png" alt="goose" /> OWASP

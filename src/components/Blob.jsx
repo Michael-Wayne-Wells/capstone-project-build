@@ -6,7 +6,7 @@ const slow = { tension: 200, friction: 40 };
 const trans = (x, y) =>
   `translate3d(${x}px,${y}px,0) translate3d(-100%, -100%,0)`;
 
-export default function Goo() {
+export default function Goo(props) {
   const [trail, set] = useTrail(5, () => ({
     xy: [0, 0],
     config: i => (i === 0 ? fast : slow)
@@ -108,7 +108,8 @@ export default function Goo() {
           .hooks-main {
             position: absolute;
             width: 100%;
-            height: 100%;
+            opacity: 0.7;
+            height: 400px;
             filter: url("#goo");
             overflow: hidden;
           }
