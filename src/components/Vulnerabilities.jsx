@@ -44,20 +44,24 @@ class Vulnerabilities extends React.Component {
         </ParallaxLayer>
 
         <ParallaxLayer
-          offset={2}
+          offset={1.5}
           speed={1}
           style={{
             display: "flex",
             alignItems: "center",
+            padding: "50px",
             justifyContent: "center"
           }}
-        ></ParallaxLayer>
+        >
+          <h2 style={{ fontSize: "4vw" }}>{this.props.description}</h2>
+        </ParallaxLayer>
       </Parallax>
     );
   }
 }
 Vulnerabilities.propTypes = {
   name: PropTypes.string,
-  rank: PropTypes.number
+  rank: PropTypes.number,
+  description: PropTypes.string
 };
 export default Vulnerabilities;

@@ -6,7 +6,12 @@ import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
 const pages = vulns.map((vuln, index) => ({ style }) => (
   <animated.div style={{ ...style, background: "#2e2e2e" }}>
-    <Vulnerabilities name={vuln.name} rank={vuln.rank} key={index} />
+    <Vulnerabilities
+      name={vuln.name}
+      rank={vuln.rank}
+      description={vuln.description}
+      key={index}
+    />
   </animated.div>
 ));
 function Learn() {
