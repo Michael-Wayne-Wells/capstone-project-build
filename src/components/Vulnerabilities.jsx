@@ -19,10 +19,10 @@ class Vulnerabilities extends React.Component {
           <h2 style={{ fontSize: "30vw" }}>{this.props.rank}</h2>
         </ParallaxLayer>
         <ParallaxLayer
-          offset={1}
+          offset={0.9}
           speed={0}
           style={{
-            height: "200px",
+            height: "300px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -30,7 +30,7 @@ class Vulnerabilities extends React.Component {
           }}
         />
         <ParallaxLayer
-          offset={0.9}
+          offset={0.8}
           speed={0.5}
           style={{
             display: "flex",
