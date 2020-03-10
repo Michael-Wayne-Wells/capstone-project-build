@@ -1,42 +1,52 @@
 import React from "react";
 import { FaUsers } from "react-icons/fa";
+import { NavLink, BrowserRouter, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+function Header(props) {
+  const handleLogoutUser = e => {
+    props.logoutUser(e);
+    props.history.push("/");
+  };
+  return (
+    <nav className="site-nav family-sans navbar navbar-expand bg-dark navbar-dark higher">
+      <div className="container-fluid">
+        <NavLink to="/" className="navbar-brand">
+          <img style={{ height: "25px" }} src="goose.png" alt="goose" /> OWASP
+          trainer
+        </NavLink>
+        <div className="navbar-nav ml-auto">
+          <NavLink className="nav-item nav-link" to="/learn">
+            Learn the OWASP top 10
+          </NavLink>
 
-class Header extends React.Component {
-  render() {
-    const { user } = this.props;
-
-    return (
-      <nav className="site-nav family-sans navbar navbar-expand bg-dark navbar-dark higher">
-        <div className="container-fluid">
-          <a href="/" className="navbar-brand">
-            <img style={{ height: "25px" }} src="goose.png" alt="goose" /> OWASP
-            trainer
-          </a>
-          <div className="navbar-nav ml-auto">
-            <a className="nav-item nav-link" href="/learn">
-              Learn the OWASP top 10
-            </a>
-
-            {!user && (
-              <a className="nav-item nav-link" href="/login">
-                log in
-              </a>
-            )}
-            {!user && (
-              <a className="nav-item nav-link" href="/register">
-                register
-              </a>
-            )}
-            {user && (
-              <a className="nav-item nav-link" href="/login">
-                log out
-              </a>
-            )}
-          </div>
+          {!props.user && (
+            <NavLink className="nav-item nav-link" to="/login">
+              log in
+            </NavLink>
+          )}
+          {!props.user && (
+            <NavLink className="nav-item nav-link" to="/register">
+              register
+            </NavLink>
+          )}
+          {props.user && (
+            <NavLink
+              className="nav-item nav-link"
+              to="/login"
+              onClick={e => handleLogoutUser(e)}
+            >
+              log out
+            </NavLink>
+          )}
         </div>
-      </nav>
-    );
-  }
+      </div>
+    </nav>
+  );
 }
 
-export default Header;
+Header.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
+};
+
+export default withRouter(Header);
