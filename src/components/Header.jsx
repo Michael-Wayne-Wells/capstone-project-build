@@ -1,12 +1,12 @@
 import React from "react";
-import { FaUsers } from "react-icons/fa";
-import { NavLink, BrowserRouter, withRouter } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 function Header(props) {
   const handleLogoutUser = e => {
     props.logoutUser(e);
     props.history.push("/");
   };
+  console.log(props.user);
   return (
     <nav className="site-nav family-sans navbar navbar-expand bg-dark navbar-dark higher">
       <div className="container-fluid">

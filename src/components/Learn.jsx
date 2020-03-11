@@ -1,20 +1,32 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Vulnerabilities from "./Vulnerabilities";
 import { useTransition, animated } from "react-spring";
-import vulns from "./Data";
+
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 
-const pages = vulns.map((vuln, index) => ({ style }) => (
-  <animated.div style={{ ...style, background: "#2e2e2e" }}>
-    <Vulnerabilities
-      name={vuln.name}
-      rank={vuln.rank}
-      description={vuln.description}
-      key={index}
-    />
-  </animated.div>
-));
 function Learn() {
+  const [pages, setPages] = useState(null);
+  let url = "http://localhost:3001/owasp";
+  useEffect(() => {
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => {
+        console.log(data);
+
+        let pages = data.map((vuln, index) => ({ style }) => (
+          <animated.div style={{ ...style, background: "#2e2e2e" }}>
+            <Vulnerabilities
+              name={vuln.name}
+              rank={vuln.rank}
+              description={vuln.description}
+              key={index}
+            />
+          </animated.div>
+        ));
+        setPages(pages);
+      });
+  }, [url]);
+
   const [index, set] = useState(0);
   const forwardClick = useCallback(() => set(state => (state + 1) % 10), []);
   const backClick = useCallback(() => {
@@ -23,7 +35,7 @@ function Learn() {
     } else {
       set(state => (state - 1) % 10);
     }
-  }, []);
+  }, [index]);
   const transitions = useTransition(index, p => p, {
     from: { opacity: 0, transform: "translate3d(0,100%, 0)" },
     enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
@@ -74,8 +86,10 @@ function Learn() {
       <FiArrowLeftCircle className="back" onClick={backClick} />
       <div className="simple-trans-main">
         {transitions.map(({ item, props, key }) => {
-          const Page = pages[item];
-          return <Page key={key} style={props} />;
+          if (pages !== null) {
+            const Page = pages[item];
+            return <Page key={key} style={props} />;
+          }
         })}
       </div>
     </div>

@@ -6,17 +6,13 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import FlashCards from "./components/FlashCards";
 import firebase from "./components/Firebase";
-import {
-  Switch,
-  BrowserRouter as Router,
-  Route,
-  useHistory
-} from "react-router-dom";
+import NewClass from "./components/NewClass";
+import { Switch, Route } from "react-router-dom";
 
 function App(props) {
   const [user, setUser] = useState(null);
   const [displayName, setDisplayName] = useState(null);
-  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
 
   const registerUser = userName => {
     firebase.auth().onAuthStateChanged(FBUser => {
@@ -25,7 +21,7 @@ function App(props) {
       }).then(() => {
         setUser(FBUser);
         setDisplayName(FBUser.displayName);
-        setUserId(FBUser.uid);
+        // setUserId(FBUser.uid);
       });
     });
   };
@@ -35,7 +31,7 @@ function App(props) {
       if (FBUser) {
         setUser(FBUser);
         setDisplayName(FBUser.displayName);
-        setUserId(FBUser.uid);
+        // setUserId(FBUser.uid);
       }
     });
   }, []);
@@ -43,7 +39,7 @@ function App(props) {
     e.preventDefault();
     setUser(null);
     setDisplayName(null);
-    setUserId(null);
+    // setUserId(null);
     firebase.auth().signOut();
   };
   return (
@@ -65,6 +61,9 @@ function App(props) {
         </Route>
         <Route path="/flashcards">
           <FlashCards />
+        </Route>
+        <Route path="/newclass">
+          <NewClass />
         </Route>
       </Switch>
     </div>
