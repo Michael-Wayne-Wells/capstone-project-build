@@ -1,68 +1,109 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Owasp Top 10 information guide
 
-## Available Scripts
+## Created by Michael Wells
 
-In the project directory, you can run:
+## Description
 
-### `yarn start`
+This application demonstrates a React based single page app that is dynamically buildt and updated via database information. For this app, information from the Owasp top 10 was placed in a database which the react app then lays out based on a set of rules defined within the app.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+User authentication from Firebase is enable in this app which will enable more interactivity in future features.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Setup/Installation Requirements
 
-### `yarn test`
+- clone and open the file locally
+- _in terminal run:_
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  > \$git clone https://github.com/Michael-Wayne-Wells/tap-room.git
 
-### `yarn build`
+- Navigate into project folder
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> \$cd tap-room
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- _install node modules_
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> \$npm install
 
-### `yarn eject`
+- _set up Firebase for user Authentication_
+  - in the src/components folder, create a file called Firebase.js.
+  - Set up user a FireBase account, register your app, and enable user email Authentication (here)[https://firebase.google.com/]
+  - you will be given credentials for your app that will look something like:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+     var firebaseConfig = {
+        apiKey: "api-key",
+        authDomain: "project-id.firebaseapp.com",
+        databaseURL: "https://project-id.firebaseio.com",
+        projectId: "project-id",
+        storageBucket: "project-id.appspot.com",
+        messagingSenderId: "sender-id",
+        appId: "app-id",
+        measurementId: "G-measurement-id",
+        };
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    * Back in your Firebase.js folder, you will use that information and to make your the file look like:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    import firebase from "firebase/app";
+    import "firebase/database";
+    import "firebase/auth";
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    const firebaseConfig = {
+        apiKey: "api-key",
+        authDomain: "project-id.firebaseapp.com",
+        databaseURL: "https://project-id.firebaseio.com",
+        projectId: "project-id",
+        storageBucket: "project-id.appspot.com",
+        messagingSenderId: "sender-id",
+        appId: "app-id",
+        measurementId: "G-measurement-id",
+        };
+    firebase.initializeApp(firebaseConfig);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    export const provider = new firebase.auth.GoogleAuthProvider();
+    export const auth = firebase.auth();
 
-### Code Splitting
+    export default firebase;
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- _run the program_
+  - _this command will also start a local JSON API server which is located in the tools directory in the root folder. There, you can edit and customize data._
 
-### Analyzing the Bundle Size
+> \$npm run start
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Known Bugs
 
-### Making a Progressive Web App
+_Currently, there is an editable feature for when you click the information on the information pages. Information will update on the DOM but is not updating in the Database_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## To-Do
 
-### Advanced Configuration
+- Update Datebase on Editable dom Components
+- Create Admin privalges for editing content
+- Add more Dynamic elements with user functionality such as:
+  - quizes
+  - message boards
+  - progress tracking for learning modules.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Support and contact details
 
-### Deployment
+_If you have any issues with the program or want to reach out, email [mwells1286@gmail.com](href="mailto:mwells1286@gmail.com")_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Technologies Used
 
-### `yarn build` fails to minify
+_This program utilized:_
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- _React_
+- _FireBase_
+- _ReactSpring_
+  _ React Router
+  _
+- _JavaScript_
+- _HTML_
+- _CSS_
+- _Bootstrap_
+
+### License
+
+_Licensed under MIT license_

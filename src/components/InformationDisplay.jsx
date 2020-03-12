@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Editable from "./Editable";
 import Contents from "./Contents";
 
-function Vulnerabilities(props) {
+function InformationDisplay(props) {
   const [description, setDescription] = useState(props.description);
   const inputRef = useRef();
   let parallex;
@@ -96,10 +96,10 @@ function Vulnerabilities(props) {
     </Parallax>
   );
 }
-Vulnerabilities.propTypes = {
+InformationDisplay.propTypes = {
   name: PropTypes.string.isRequired,
   rank: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   content: PropTypes.array.isRequired
 };
-export default Vulnerabilities;
+export default InformationDisplay;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Vulnerabilities from "./Vulnerabilities";
+import InformationDisplay from "./InformationDisplay";
 import { useTransition, animated } from "react-spring";
 
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
@@ -12,7 +12,7 @@ function Learn() {
       .then(data => {
         let pages = data.map((vuln, index) => ({ style }) => (
           <animated.div style={{ ...style, background: "#2e2e2e" }}>
-            <Vulnerabilities
+            <InformationDisplay
               name={vuln.name}
               rank={vuln.rank}
               description={vuln.description}

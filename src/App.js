@@ -4,12 +4,10 @@ import Welcome from "./components/Welcome";
 import Learn from "./components/Learn";
 import Register from "./components/Register";
 import Login from "./components/Login";
-import FlashCards from "./components/FlashCards";
 import firebase from "./components/Firebase";
-import NewClass from "./components/NewClass";
 import { Switch, Route } from "react-router-dom";
 
-function App(props) {
+function App() {
   const [user, setUser] = useState(null);
   const [displayName, setDisplayName] = useState(null);
   // const [userId, setUserId] = useState(null);
@@ -68,12 +66,6 @@ function App(props) {
         </Route>
         <Route path="/learn">
           <Learn />
-        </Route>
-        <Route path="/flashcards">
-          <FlashCards />
-        </Route>
-        <Route path="/newclass">
-          <NewClass />
         </Route>
       </Switch>
     </div>
