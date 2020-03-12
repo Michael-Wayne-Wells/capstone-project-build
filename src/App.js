@@ -25,6 +25,16 @@ function App(props) {
       });
     });
   };
+  let ref = firebase.database().ref("owasp");
+  ref.on(
+    "value",
+    function(snapshot) {
+      console.log(snapshot.val());
+    },
+    function(errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    }
+  );
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged(FBUser => {
