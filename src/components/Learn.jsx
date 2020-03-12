@@ -3,7 +3,6 @@ import Vulnerabilities from "./Vulnerabilities";
 import { useTransition, animated } from "react-spring";
 
 import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-
 function Learn() {
   const [pages, setPages] = useState(null);
   let url = "http://localhost:3001/owasp";
@@ -11,8 +10,6 @@ function Learn() {
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
-
         let pages = data.map((vuln, index) => ({ style }) => (
           <animated.div style={{ ...style, background: "#2e2e2e" }}>
             <Vulnerabilities
