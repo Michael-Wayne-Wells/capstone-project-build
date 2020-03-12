@@ -5,11 +5,12 @@ import Editable from "./Editable";
 
 function Vulnerabilities(props) {
   const [text, setText] = useState("");
+  const [description, setDescription] = useState(props.description);
   const inputRef = useRef();
   let parallex;
-  
+
   return (
-    <Parallax ref={ref => (parallex = ref)} pages={4}>
+    <Parallax ref={ref => (parallex = ref)} pages={3 + props.content.length}>
       <ParallaxLayer
         offset={0}
         speed={1}
@@ -55,11 +56,10 @@ function Vulnerabilities(props) {
           justifyContent: "center"
         }}
       >
-
         <Editable
-          text={text}
+          text={description}
           style={{ fontSize: "4vw" }}
-          placeholder={props.description}
+          placeholder={description}
           childRef={inputRef}
           type="input"
         >
@@ -69,9 +69,9 @@ function Vulnerabilities(props) {
             cols="20"
             type="text"
             name="text"
-            placeholder={props.description}
-            value={props.description}
-            onChange={e => setText(e.target.value)}
+            placeholder={description}
+            value={description}
+            onChange={e => setDescription(e.target.value)}
           />
         </Editable>
       </ParallaxLayer>
@@ -104,12 +104,47 @@ function Vulnerabilities(props) {
           />
         </Editable>
       </ParallaxLayer>
+      {props.content.map((section, index) => {
+        return (
+          <ParallaxLayer
+            key={index}
+            offset={3 + index}
+            speed={0.75}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "50px",
+              justifyContent: "center"
+            }}
+          >
+            <Editable
+              text={section}
+              style={{ fontSize: "4vw" }}
+              placeholder="Write a task name"
+              childRef={inputRef}
+              type="input"
+            >
+              <textarea
+                rows="4"
+                cols="20"
+                ref={inputRef}
+                type="text"
+                name="text"
+                placeholder="Write a new section"
+                value={text}
+                onChange={e => setText(e.target.value)}
+              />
+            </Editable>
+          </ParallaxLayer>
+        );
+      })}
     </Parallax>
   );
 }
 Vulnerabilities.propTypes = {
-  name: PropTypes.string,
-  rank: PropTypes.number,
-  description: PropTypes.string
+  name: PropTypes.string.isRequired,
+  rank: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  content: PropTypes.array.isRequired
 };
 export default Vulnerabilities;
