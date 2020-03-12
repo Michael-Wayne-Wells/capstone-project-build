@@ -19,6 +19,7 @@ function Learn() {
               name={vuln.name}
               rank={vuln.rank}
               description={vuln.description}
+              content={vuln.content}
               key={index}
             />
           </animated.div>
