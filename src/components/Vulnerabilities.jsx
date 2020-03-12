@@ -2,10 +2,12 @@ import React, { useState, useRef } from "react";
 import { Parallax, ParallaxLayer } from "react-spring/renderprops-addons";
 import PropTypes from "prop-types";
 import Editable from "./Editable";
+
 function Vulnerabilities(props) {
   const [text, setText] = useState("");
   const inputRef = useRef();
   let parallex;
+  
   return (
     <Parallax ref={ref => (parallex = ref)} pages={4}>
       <ParallaxLayer
@@ -13,7 +15,6 @@ function Vulnerabilities(props) {
         speed={1}
         style={{
           display: "flex",
-
           alignItems: "center",
           justifyContent: "center"
         }}
@@ -37,7 +38,6 @@ function Vulnerabilities(props) {
         style={{
           display: "flex",
           alignItems: "center",
-
           justifyContent: "center",
           color: "black"
         }}
@@ -55,6 +55,7 @@ function Vulnerabilities(props) {
           justifyContent: "center"
         }}
       >
+
         <Editable
           text={text}
           style={{ fontSize: "4vw" }}
