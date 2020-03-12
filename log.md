@@ -91,6 +91,12 @@
 - 3:30 -4 write cover letter, edit resume for HCL
 - 4 - 5 other related emails to epicodus and this log.
 
+## Log 3/12
+
+- 8-11 add more content and set up data base for better readability and flow.
+- 11 - 1 Migrat data to Firebase. Still can't get it to work just right. Migrate back to mock API.
+-
+
 link to project through course I am building that will be groundwork for capstone: https://github.com/Michael-Wayne-Wells/react-courses-training.git
 
 initial/abandoned/reclaimed react app for capstone:
