@@ -13,11 +13,11 @@ User authentication from Firebase is enable in this app which will enable more i
 - clone and open the file locally
 - _in terminal run:_
 
-  > \$git clone https://github.com/Michael-Wayne-Wells/tap-room.git
+  > \$git clone https://github.com/Michael-Wayne-Wells/capstone-project-build.git
 
 - Navigate into project folder
 
-> \$cd tap-room
+> \$cd capstone-project-build
 
 - _install node modules_
 
