@@ -41,7 +41,7 @@ User authentication from Firebase is enable in this app which will enable more i
         };
 ```
 
-    * Back in your Firebase.js folder, you will use that information and to make your the file look like:
+* Back in your Firebase.js folder, you will use that information and to make your the file look like:
 
 ```
 
